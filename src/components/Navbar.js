@@ -1,4 +1,5 @@
 import React from 'react'
+import ShoppingCart from '../ShoppingCart'
 //import { link } from 'react'
 
 const Navbar = () => {
@@ -20,8 +21,13 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
+            <ShoppingCart/>
         </nav>
     )
+}
+
+function ItemListContainer(){
+    //funcion vacia para la tarea
 }
 
 export default Navbar
