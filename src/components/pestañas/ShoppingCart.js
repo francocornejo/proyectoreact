@@ -1,9 +1,11 @@
 import React from 'react'
+import CountButton from './ProductCard'
 
 export const ShoppingCart = () => {
+
     return (
         <div>
-            <button><i className="bi bi-cart">0</i></button>
+            <button onclick={CountButton()}></button>
         </div>
     )
 }

@@ -3,6 +3,8 @@ import './App.css';
 import Navbar from './components/Navbar'
 import Cerveza from './components/pestañas/cervezas'
 import Hamburguesas from './components/pestañas/hamburguesas'
+import ProductCard from './components/pestañas/ProductCard';
+import CountButton from './components/pestañas/ProductCard';
 
 function App() {
   return (
@@ -10,18 +12,9 @@ function App() {
       <Navbar/>
 
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+          {/* <ProductCard/> */}
+      <CountButton/>
+
       </header>
     </div>
   );
