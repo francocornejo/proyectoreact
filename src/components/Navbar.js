@@ -1,6 +1,4 @@
 import React from 'react'
-import ShoppingCart from './pestañas/ShoppingCart'
-//import { link } from 'react'
 
 const Navbar = () => {
     return (
@@ -21,7 +19,6 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-            <ShoppingCart/>
         </nav>
     )
 }

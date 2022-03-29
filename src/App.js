@@ -1,10 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar'
-import Cerveza from './components/pestañas/cervezas'
-import Hamburguesas from './components/pestañas/hamburguesas'
-import ProductCard from './components/pestañas/ProductCard';
-import CountButton from './components/pestañas/ProductCard';
+import Contador from './components/pestañas/Contador';
+import {ItemListContainer} from './components/pestañas/ItemListContainer'
 
 function App() {
   return (
@@ -12,9 +9,10 @@ function App() {
       <Navbar/>
 
       <header className="App-header">
-          {/* <ProductCard/> */}
-      <CountButton/>
-
+      <Contador/>
+      <ItemListContainer/>
+      
+    
       </header>
     </div>
   );
