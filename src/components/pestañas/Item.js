@@ -1,20 +1,18 @@
+import { Button } from 'bootstrap';
+import { Link } from 'react-router-dom'
 import React from 'react';
 
 export const Item = ({ item }) => {
-  // aca mostrarian todas las partes del item/producto en cuestion, dandole estilo
+
   return (
-    <div className='card-deck'>
-        <div className='card text-white bg-primary mb-3' style={{width:'14rem'}}>
-            <div className='card-header'>
-                <h3>{item.titulo}</h3>
-            </div>
-            <div className='card-body' style={{padding:'3rem'}}>
-                <img src='' alt='Imagen'/>
-            </div>
-            <div className='card-footer'>
-                <p className='card-text'>Precio: ${item.precio}</p>
-                <p className='card-text'>Cantidad: {item.cantidad}</p>
-            </div>
+        
+    <div className='card me-1 mb-5 col-3'>
+            <img className='card-img-top' src={item.img} alt='Imagen'/>
+        <div className='card-body'>
+            <h3 className='card-title text-start'>{item.titulo}</h3>
+            <p className='card-text text-start'>Precio: ${item.precio}</p>
+            <p className='card-text text-start'>Cantidad: {item.cantidad}</p>
+            <Link to={`/detail/${item.id}`}><button className='btn btn-primary' variant="primary">Ver más</button></Link>
         </div>
     </div>
   )

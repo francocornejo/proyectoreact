@@ -2,19 +2,23 @@ import './App.css';
 import Navbar from './components/Navbar'
 import Contador from './components/pestañas/Contador';
 import {ItemListContainer} from './components/pestañas/ItemListContainer'
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
+import ItemDetailContainer  from './components/pestañas/ItemDetailContainer'
 
 function App() {
   return (
-    <div className="App">
-      <Navbar/>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar/>
 
-      <header className="App-header">
-      <Contador/>
-      <ItemListContainer/>
-      
-    
-      </header>
-    </div>
+        <Routes> 
+          <Route path='/' element={<ItemListContainer/>}/>
+          <Route path="/detail/:itemId" element={<ItemDetailContainer/>}/>
+
+          <Route path='*' element={ <Navigate to='/'/>} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

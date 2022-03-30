@@ -1,27 +1,24 @@
 import React, {useState} from 'react'
 
-const CountButton = () => {
-    let [ count, setCount] = useState(0)
+const Contador = ({ cantidad, setCantidad, handleAgregar}) => {
 
     function clickSuma(){
-        setCount(count+1)
+        setCantidad(cantidad + 1)
     }
 
     function clickResta(){
-        if(count === 0){
-            setCount(count)
-        }else{
-            setCount(count-1)
-        }
+        cantidad > 1 && setCantidad(cantidad - 1)
     }
 
     return (
         <div>
-            <button onClick={clickResta}>Quitar</button>
-            <p>{count}</p>
-            <button onClick={clickSuma}>Agregar</button>
+            <button className="btn btn-outline-primary" onClick={clickResta}>-</button>
+            <span className="mx-3">{cantidad}</span>
+            <button className="btn btn-primary" onClick={clickSuma}>+</button>
+            <br/>
+            <button className="btn btn-success my-2" onClick={handleAgregar}>Agregar</button>
         </div>
     )
 }
 
-export default CountButton
+export default Contador
