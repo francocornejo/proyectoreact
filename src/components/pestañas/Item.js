@@ -6,7 +6,7 @@ export const Item = ({ item }) => {
 
   return (
         
-    <div className='card me-1 mb-5 col-3'>
+    <div className='card my-5 me-1 mb-5 col-3'>
             <img className='card-img-top' src={item.img} alt='Imagen'/>
         <div className='card-body'>
             <h3 className='card-title text-start'>{item.titulo}</h3>

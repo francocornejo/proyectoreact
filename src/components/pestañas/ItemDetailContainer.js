@@ -16,7 +16,9 @@ const ItemDetailContainer = () => {
         setLoading(true)
 
         PedirDatos().then((res) => {
+
             setItem(res.find((prod) => prod.id === Number(itemId)) )
+            
         })
         .finally(() => { 
             setLoading(false)

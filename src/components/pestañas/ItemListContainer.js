@@ -7,21 +7,25 @@ import {ItemList} from './ItemList'
 export const ItemListContainer = () => {
     const [items, setItems] = useState([]);
 
-    const params = useParams()
-    console.log(params)
+    const {categoriaId} = useParams()
 
   useEffect(() => {
     
     const getItems = new Promise((resolve) => {
       setTimeout(() => {
-        resolve(Prod);
+        resolve( Prod );
       }, 2000);
     });
 
     getItems.then((res) => {
-      setItems(res);
+      
+      if(categoriaId){
+        setItems( res.filter( (prod) => prod.categoria === categoriaId ) )
+      }else{
+      setItems( res );
+    }
     });
-  }, []);
+  }, [categoriaId]);
 
   // el contenedor llama al componente presentacion ItemList
   return <ItemList items={items} />;
