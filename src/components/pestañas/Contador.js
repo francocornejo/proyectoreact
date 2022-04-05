@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const Contador = ({ cantidad, setCantidad, handleAgregar}) => {
+const Contador = ({ cantidad, setCantidad, onAdd}) => {
 
     function clickSuma(){
         setCantidad(cantidad + 1)
@@ -16,7 +16,7 @@ const Contador = ({ cantidad, setCantidad, handleAgregar}) => {
             <span className="mx-3">{cantidad}</span>
             <button className="btn btn-primary" onClick={clickSuma}>+</button>
             <br/>
-            <button className="btn btn-success my-2" onClick={handleAgregar}>Agregar</button>
+            <button className="btn btn-success my-2" onClick={onAdd}>Agregar</button>
         </div>
     )
 }
