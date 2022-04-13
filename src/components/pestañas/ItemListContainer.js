@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import { Prod } from '../utils/Prod'
 import {ItemList} from './ItemList'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../../firebase/config'
 
 
 export const ItemListContainer = () => {
@@ -10,21 +12,18 @@ export const ItemListContainer = () => {
     const {categoriaId} = useParams()
 
   useEffect(() => {
-    
-    const getItems = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve( Prod );
-      }, 2000);
-    });
+    //-1 armar la refenrcia
+    const productosRef = collection(db, "productos")
+    const q = categoriaId ? query(productosRef, where('categoria', '==', categoriaId)) : productosRef
 
-    getItems.then((res) => {
-      
-      if(categoriaId){
-        setItems( res.filter( (prod) => prod.categoria === categoriaId ) )
-      }else{
-      setItems( res );
-    }
-    });
+
+    //-2 llamar (async) a esa referencia ( promesa)
+    getDocs(q)
+    .then(resp => {
+      const items = resp.docs.map((doc) => ({id: doc.id, ...doc.data()}))
+      console.log(items)
+      setItems(items)
+    })
   }, [categoriaId]);
 
   // el contenedor llama al componente presentacion ItemList
