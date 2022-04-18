@@ -25,6 +25,7 @@ export const ItemDetail = ({id, stock, img, titulo, categoria, detalle, precio, 
     }
 
     return (
+        
         <div className="container my-5 w-25">
             <div className='card'>
                 <img src={img} alt={titulo}/>
@@ -49,10 +50,6 @@ export const ItemDetail = ({id, stock, img, titulo, categoria, detalle, precio, 
                 <Link to='/cart' className='btn btn-success d-block'>Finalizar Compra</Link>
             }
             <Link to='/' className='btn btn-secondary'>Volver</Link>
-
-            
-
-            
         </div>
     )
 }

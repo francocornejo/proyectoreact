@@ -47,7 +47,7 @@ export const Cart = () => {
                 }
                 <h3 className='text-start my-3'>Total: ${ cartTotal() }</h3>
                 <Link to='/' className='btn btn-secondary btn-sm'>Seguir Comprando</Link>
-                <Link to='/' className='btn btn-primary btn-sm'>Finalizar Compra</Link>
+                <Link to='/checkout' className='btn btn-primary btn-sm mx-3'>Finalizar Compra</Link>
             </>
             }
         </div>
