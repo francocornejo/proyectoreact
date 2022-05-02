@@ -8,7 +8,7 @@ export const ItemList = ({ items }) => {
       <div className='row justify-content-evenly'>
       {items.map((item) => (
         
-        <Item item={item} />
+        <Item key={item.id} item={item} />
       ))}
       </div>
     </div>

@@ -11,7 +11,7 @@ export const ItemListContainer = () => {
     const {categoriaId} = useParams()
 
   useEffect(() => {
-    //-1 armar la refenrcia
+    //-1 armar la referencia
     const productosRef = collection(db, "productos")
     const q = categoriaId ? query(productosRef, where('categoria', '==', categoriaId)) : productosRef
 

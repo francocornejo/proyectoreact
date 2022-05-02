@@ -1,12 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { CartWidget } from './cart/CartWidget'
+import wolf from './utils/imagesUtils/wolf1.png'
+import '../components/pestañas/styles.css'
+import {Animated} from "react-animated-css"
 
 const Navbar = () => {
     return (
         <header className='header'>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
+                <div className='d-flex align-items-center'>
+                    <h4 className='mx-3 text-primary'>Cerveceria Wolf</h4>
+                <Animated animationIn="zoomInDown" isVisible={true}>
+                        <img className='logo mx-5' src={wolf}/>
+                </Animated>
+                </div>
+                
+                <div className="d-flex">
                     <Link to={`/`} className="navbar-brand" href="#">Inicio</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -24,8 +34,8 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div> 
-                </div>
                 <CartWidget/>
+                </div>
             </nav>
         </header>
     )

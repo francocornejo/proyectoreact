@@ -3,12 +3,13 @@ import { CartContext } from '../context/CartContext'
 import Contador from './Contador'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 export const ItemDetail = ({id, stock, img, titulo, categoria, detalle, precio, info}) => {
 
     const {addItem, isInCart} = useContext( CartContext )
 
-    const [cantidad, setCantidad]= useState(0)
+    const [cantidad, setCantidad]= useState(1)
 
     const handleAgregar = () => {
         const itemToCart = {
@@ -21,6 +22,13 @@ export const ItemDetail = ({id, stock, img, titulo, categoria, detalle, precio, 
             info
         }
         addItem(itemToCart)
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto Agregado',
+            showConfirmButton: false,
+            timer: 1000
+          })
         console.log(itemToCart)
     }
 
@@ -47,9 +55,9 @@ export const ItemDetail = ({id, stock, img, titulo, categoria, detalle, precio, 
                 setCantidad={setCantidad}
                 onAdd={handleAgregar}/>
                 :
-                <Link to='/cart' className='btn btn-success d-block'>Finalizar Compra</Link>
+                <Link to='/cart' className='btn btn-success d-block '>Finalizar Compra</Link>
             }
-            <Link to='/' className='btn btn-secondary'>Volver</Link>
+            <Link to='/' className='btn btn-secondary d-block my-1'>Volver</Link>
         </div>
     )
 }

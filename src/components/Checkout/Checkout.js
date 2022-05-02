@@ -2,16 +2,17 @@ import { useState, useContext } from 'react'
 import { CartContext } from "../context/CartContext"
 import { db } from '../../firebase/config'
 import { collection, addDoc, Timestamp } from 'firebase/firestore'
-
+import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom";
 
 export const Checkout = () => {
-
-    const {cart, cartTotal} = useContext(CartContext)
+    let navigate = useNavigate();
+    const {cart, cartTotal, removeCart} = useContext(CartContext)
     const [values, setValues] = useState({
         nombre: '',
         email: '',
         tel: '',
-        dir: ''
+        direccionEnvio: '',
     })
 
     const handleInputChange = (e) => {
@@ -22,9 +23,8 @@ export const Checkout = () => {
         })
     }
     
-
     const handleSubmit = (e) => {
-
+        
         e.preventDefault()
         const orden = {
             items: cart,
@@ -37,7 +37,28 @@ export const Checkout = () => {
 
         addDoc(ordersRef, orden)
             .then((res) => {
-                console.log(res.id)
+                if (values.direccionEnvio !=="" &&
+                    values.email !== "" &&
+                    values.tel !== "" &&
+                    values.nombre !== ""){
+                        Swal.fire({
+                            title:'Gracias por su compra!',
+                            text:'Se enviará el pedido a ' + values.direccionEnvio + ' con una demora de 30 a 45 minutos. Porfavor guarde el ID de su envio: ' + res.id,
+                            icon:'success',
+                        })
+                    if (res.id !== undefined){
+                        removeCart()
+                        navigate("../success", { replace: true });
+                    }
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Fijate de cargar bien tus datos personales',
+                          })
+                    }
+                debugger;
+                
             })
 }
 
@@ -59,6 +80,7 @@ export const Checkout = () => {
                 <input
                 className='form-control my-2'
                 type={'email'}
+                placeholder='email@email.com'
                 value={values.email}
                 onChange={handleInputChange}
                 name="email"
@@ -66,13 +88,23 @@ export const Checkout = () => {
 
                 <input
                 className='form-control my-2'
-                type={'text'}
+                type={'tel'}
+                placeholder='11223344'
                 value={values.tel}
                 onChange={handleInputChange}
                 name="tel"
                 />
 
-                <button className='btn btn-primary' type='submit' >Enviar</button>
+                <input 
+                    className='form-control my-2'
+                    type={'text'}
+                    placeholder='Direccion de Envío'
+                    value={values.direccionEnvio}
+                    onChange={handleInputChange}
+                    name="direccionEnvio"
+                />
+
+                <button to='/' className='btn btn-primary' type='submit' >Enviar</button>
             </form>
         </div>
     )

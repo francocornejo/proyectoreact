@@ -9,10 +9,12 @@ export const CartWidget = () => {
     const { cartCant } = useContext(CartContext)
 
     return (
-        <Link to={'/cart'} className='widget d-flex'>
-            <BsCart3/>
-            <span>{cartCant()}</span>
-        </Link>
+        <div className='d-flex align-items-center mx-2'>
+            <Link to={'/cart'} className='widget d-flex mx-1'>
+                <BsCart3/>
+            </Link>
+                <span>{cartCant()}</span>
+        </div>
             
         
         
